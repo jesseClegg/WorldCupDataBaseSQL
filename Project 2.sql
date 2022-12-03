@@ -1,0 +1,133 @@
+/* UTILITY FUNCTIONS*/
+DROP TABLE Tournament;
+SHOW TABLES
+/* UTILITY FUNCTIONS*/
+
+
+
+
+CREATE TABLE Country (
+Name CHAR(30),
+Population INTEGER,
+PRIMARY KEY (Name)
+);
+
+CREATE TABLE Tournament (
+Year YEAR,
+Country CHAR(30),  
+PRIMARY KEY (Year),
+FOREIGN KEY (Country) REFERENCES  Country(Name)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
+CREATE TABLE Team(
+Year YEAR,
+TeamID INTEGER,
+Country CHAR(30),
+  PRIMARY KEY(Year, TeamID),
+  FOREIGN KEY (Country) REFERENCES Country(Name)
+   ON DELETE CASCADE
+   ON UPDATE CASCADE,
+  FOREIGN KEY (Year) REFERENCES Tournament(Year)
+   ON DELETE CASCADE
+   ON UPDATE CASCADE
+);
+
+CREATE TABLE Member(
+MemberID INTEGER,
+Name CHAR(30),
+  PRIMARY KEY (MemberID)
+); 
+
+CREATE TABLE HomeClub(
+HomeClubName CHAR(30),
+Country CHAR(30),
+PRIMARY KEY (HomeClubName),
+  FOREIGN KEY (Country) REFERENCES Country(Name)
+   ON DELETE CASCADE
+   ON UPDATE CASCADE
+);
+
+CREATE TABLE SupportStaff(
+StaffID INTEGER,
+Role CHAR(30),
+PRIMARY KEY (StaffID),
+  FOREIGN KEY (StaffID) REFERENCES Member(MemberID)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
+CREATE TABLE Player(
+PlayerID INTEGER,
+Position CHAR(30),
+HomeClubName CHAR(30),
+PRIMARY KEY (PlayerID),
+  FOREIGN KEY (PlayerID) REFERENCES Member(MemberID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (HomeClubName) REFERENCES HomeClub(HomeClubName)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE TeamMember(
+Year YEAR,
+TeamID INTEGER,
+MemberID INTEGER,
+PRIMARY KEY (Year, TeamID, MemberID),
+  FOREIGN KEY (Year, TeamID) REFERENCES Team(Year, TeamID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (MemberID) REFERENCES Member(MemberID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE `Match` (
+MatchId INTEGER,
+Date DATE,
+Time TIME,
+Stadium CHAR(30),
+HomeYear YEAR,
+HomeTeamID INTEGER,
+AwayYear YEAR,
+AwayTeamID INTEGER,
+PRIMARY KEY (MatchId),
+  FOREIGN KEY (HomeYear, HomeTeamID) REFERENCES Team (Year, TeamID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (AwayYear, AwayTeamID) REFERENCES Team (Year, TeamID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+
+CREATE TABLE PoolGame(
+
+);
+
+
+
+/* COMPLETED ABOVE  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
