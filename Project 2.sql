@@ -3,7 +3,7 @@ DROP TABLE Tournament;
 SHOW TABLES
 /* UTILITY FUNCTIONS*/
 
-
+CREATE SCHEMA `WorldCup` ;
 
 
 CREATE TABLE Country (
