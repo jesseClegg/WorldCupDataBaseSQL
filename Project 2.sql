@@ -135,7 +135,35 @@ PRIMARY KEY (PlayerId, MatchId),
     ON UPDATE CASCADE
 );
 
-/* COMPLETED ABOVE  */
+CREATE TABLE Saves (
+PlayerId INTEGER,
+MatchId INTEGER,
+Count INTEGER,
+PRIMARY KEY (PlayerId, MatchId),
+  FOREIGN KEY (PlayerId) REFERENCES Player (PlayerId)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (MatchId) REFERENCES `Match` (MatchId)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE Customer(
+CustomerId INTEGER,
+Name CHAR(30),
+Email CHAR(30),
+CountryName CHAR(30),
+PRIMARY KEY (CustomerId)
+);
+
+CREATE TABLE Ticket (
+MatchId INTEGER,
+`Ticket#` INTEGER,
+CustomerId INTEGER,
+Price DECIMAL(13,2),
+PRIMARY KEY (MatchId, `Ticket#`)
+);
+
 
 
 
