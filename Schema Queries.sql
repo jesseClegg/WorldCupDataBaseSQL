@@ -161,7 +161,102 @@ MatchId INTEGER,
 CustomerId INTEGER,
 Price DECIMAL(13,2),
 PRIMARY KEY (MatchId, `Ticket#`)
-);
+); 
+
+
+
+/*********************** BEGIN INSERT *********************************/
+INSERT INTO 
+  Country(Name, Population)
+VALUES
+  ("United States", 310000000),
+  ("Iceland", 372295),
+  ("England", 55000000),
+  ("Germany", 83000000),
+  ("Australia", 25000000);
+
+INSERT INTO
+  Customer(CustomerId, Name, Email, CountryName)
+VALUES
+  (918, "John Smith", "johnSmith@gmail.com", "United States"),
+  (501, "Jane Smith", "janeSmith@gmail.com", "Iceland"),
+  (168, "John Doe", "johnDoe@gmail.com", "England"),
+  (576, "Jane Doe", "janeDoe@gmail.com", "Germany"),
+  (804, "John Johnson", "johnJohnson@gmail.com", "Australia");
+
+
+INSERT INTO
+  Tournament(Year, Country)
+VALUES
+  ("2018", "United States"),
+  ("2014", "Iceland"),
+  ("2010", "England"),
+  ("2006", "Germany"),
+  ("2002", "Australia");
+
+INSERT INTO
+  Team(Year, TeamId, Country)
+VALUES
+  ("2018", 82180, "United States"),
+  ("2018", 42859, "Iceland"),
+  ("2018", 78242, "Australia"),
+  ("2018", 55608, "Germany"),
+  ("2018", 62098, "England"),
+  ("2014", 62098, "England"),
+  ("2010", 62098, "England"),
+  ("2006", 62098, "England"),
+  ("2002", 62098, "England"),
+  ("2014", 82180, "United States"),
+  ("2010", 78242, "Australia"),
+  ("2006", 55608, "Germany"),
+  ("2002", 42859, "Iceland");
+  
+INSERT INTO
+    `Match`(MatchId, Date, Time, Stadium, HomeYear, HomeTeamId, AwayYear, AwayTeamId)
+VALUES
+    (635287, '2012-06-21', "19:30:00", "Wembly", "2018", 62098, "2018", 42859),
+    (228564, '2014-07-08', "18:30:00", "Azteca", "2014", 62098, "2014", 82180),
+    (897449, '2010-07-21', "17:30:00", "Stamford", "2010", 62098, "2010", 78242),
+    (876960,  "2006-05-29", "16:15:00",    "Celtic",  "2006",  62098, "2006",  55608),
+    (755050,  "2002-06-02",  "19:45:00",  "Emirates",  "2002",  62098, "2002",  42859),
+    (707650,  "2018-08-19",  "18:10:00",  "Wembly",  "2018",  78242, "2018",  55608),
+    (364820,  "2018-06-19",  "17:50:00",  "Azteca",  "2018",  82180, "2018",  55608),
+    (962067,  "2018-07-04",  "16:25:00",  "Stamford",  "2018",  82180, "2018",  62098),
+    (619043,  "2018-09-01",  "21:30:00",  "Celtic",  "2018",  82180, "2018",  78242),
+    (849739,  "2018-04-30",  "18:30:00",  "Emirates",  "2018",  78242, "2018",  62098);
+  
+INSERT INTO
+  PoolGame(PoolId)
+VALUES
+  (962067),
+  (635287),
+  (619043),
+  (849739),
+  (228564);
+
+/* completed above ^^^    */
+
+
+
+
+  
+
+
+
+
+
+  
+ 
+
+  
+
+
+
+
+
+
+
+
 
 
 
