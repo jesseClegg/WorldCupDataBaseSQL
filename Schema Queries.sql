@@ -184,7 +184,6 @@ VALUES
   (576, "Jane Doe", "janeDoe@gmail.com", "Germany"),
   (804, "John Johnson", "johnJohnson@gmail.com", "Australia");
 
-
 INSERT INTO
   Tournament(Year, Country)
 VALUES
@@ -234,12 +233,109 @@ VALUES
   (849739),
   (228564);
 
-/* completed above ^^^    */
+INSERT INTO
+  EliminationGame(EliminationId, Stage, HomePenalties, AwayPenalties)
+VALUES
+  (897449, "Final", 1, 0),
+  (876960, "Semi-Final", 2, 1),
+  (755050, "Semi-Final", 2, 1),
+  (707650, "Quarter-Final", 0, 2),
+  (364820, "Quarter-Final", 0, 0);
 
+INSERT INTO
+  Ticket(MatchId, `Ticket#`, CustomerId, Price)
+VALUES
+  (897449, 27, 918, 19.99),
+  (876960, 33, 501, 20.00),
+  (755050, 59, 168, 20.01),
+  (707650, 11, 576, 1000.00),
+  (364820, 96, 804, 5.00);
 
+INSERT INTO
+  Member(MemberId, Name)
+VALUES
+  (6420, "Australia"),
+  (6620, "Iceland"),
+  (5561, "Australia"),
+  (5991, "Iceland"),
+  (3292, "England"),
+  (1586, "England"),
+  (2741, "England"),
+  (4443, "England"),
+  (4047, "Iceland"),
+  (8968, "Iceland");
 
+INSERT INTO
+  TeamMember(Year, TeamId, MemberId)
+VALUES
+  ("2018",  78242, 6420),
+  ("2018",  78242, 5561),
+  ("2018",  62098, 6620),
+  ("2002",  42859, 5991),
+  ("2018",  42859, 5991),
+  ("2018",  82180, 3292),
+  ("2002",  62098, 6620),
+  ("2014",  62098, 6620),
+  ("2010",  62098, 6620),
+  ("2006",  62098, 6620);
 
-  
+INSERT INTO
+  SupportStaff(StaffId, Role)
+VALUES
+  (1586, "Janitor"),
+  (2741, "Secretary"),
+  (4443, "Trainer"),
+  (4047, "Equiptment Manager"),
+  (8968, "Bus Driver");
+
+INSERT INTO
+  HomeClub(HomeClubName, Country)
+VALUES
+  ("Galaxy", "United States"),
+  ("Icelandic Premier League", "Iceland"),
+  ("Arsenal", "England"),
+  ("Bayern", "Germany"),
+  ("Melbourne City FC", "Australia");
+
+INSERT INTO
+  Player(PlayerId, Position, HomeClubName)
+VALUES
+  (6420, "Goalkeeper", "Arsenal"),
+  (6620, "Striker", "Arsenal"),
+  (5561, "Midfielder", "Galaxy"),
+  (5991, "Goalkeeper", "Bayern"),
+  (3292, "Forward", "Icelandic Premier League");
+
+INSERT INTO
+  Goals(PlayerId, MatchId, Count)
+VALUES
+  (6620, 635287, 1),
+  (6620, 228564, 0),
+  (6620, 897449, 2),
+  (6620, 876960, 1),
+  (6620, 755050, 0),
+  (6420, 707650, 2),
+  (3292, 364820, 0),
+  (3292, 962067, 2),
+  (6420, 619043, 1),
+  (5561, 619043, 1),
+  (6420, 849739, 0);
+
+INSERT INTO
+  Saves(PlayerId, MatchId, Count)
+VALUES
+  (5991,  635287,  3), 
+  (6620,  228564,  0),
+  (6620,  897449,  1),
+  (6620,  876960,  2),
+  (5991,  755050,  0),
+  (6420,  707650,  1),
+  (5991,  364820,  0),
+  (5991,  962067,  1),
+  (5991,  619043,  0),
+  (6420,  849739,  2);
+
+/************** END INSERT QUERIES ************************/
 
 
 
