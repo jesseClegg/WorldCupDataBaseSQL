@@ -1,7 +1,7 @@
 INSERT INTO Country 
 VALUES ("England", 55000000)
 
-
+DELETE FROM Country WHERE NAME="Italy";
 
 INSERT INTO 
 	Country(Name, Population)

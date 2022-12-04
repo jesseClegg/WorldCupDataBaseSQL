@@ -1,9 +1,8 @@
 /* UTILITY FUNCTIONS*/
-DROP TABLE Tournament;
-SHOW TABLES
+/* DROP TABLE Tournament;*/
+/* SHOW TABLES; */
 /* UTILITY FUNCTIONS*/
-
-CREATE SCHEMA `WorldCup` ;
+/* CREATE SCHEMA `WorldCup` ;*/
 
 
 CREATE TABLE Country (
