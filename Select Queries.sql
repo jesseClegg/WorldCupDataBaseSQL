@@ -1,4 +1,4 @@
-
+Question 1
 	Select M.name
     FROM Member M
     Where M.memberId In
@@ -12,4 +12,16 @@
 			From Team T
 			Where T.Year="2018" && T.Country ="Australia"
 			)));
-				
+
+Question 2
+
+	SELECT Distinct Name
+	FROM Member M
+    Where M.MemberId in(
+	Select PlayerId
+    From Goals G
+    Where G.Count < 1);
+
+
+Question 3
+
