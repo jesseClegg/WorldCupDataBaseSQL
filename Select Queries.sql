@@ -183,12 +183,199 @@ Where Goals.MatchId IN(
 //////////// question 6
 
 
-Select M.Name, S.playerId, Sum(count)
+Select M.Name, Sum(count)
 From Saves S, Member M
 Where PlayerId in(
 	Select PlayerId 
 	From Player) And S.PlayerId=M.MemberId
     Group by PlayerId;
+
+    
+
+
+/////////// number 8
+
+Select M.Name, Sum(count) 
+From Goals GP, Member M 
+Where GP.MatchId IN(
+	Select MatchID
+	From Goals G
+	Where G.MatchId In(
+		Select E.EliminationId
+		From EliminationGame E
+)	) 
+AND M.MemberId=GP.PlayerId
+Group By PlayerId;
+
+
+
+
+
+
+///// after zooom call: SelectSelect Sum(count) 
+From Goals GP, Member M 
+Where GP.MatchId IN(
+	Select MatchID
+	From Goals G
+	Where G.MatchId In(
+		Select E.EliminationId
+		From EliminationGame E
+)	) 
+AND M.MemberId=GP.PlayerId
+Group By PlayerId
+Having Sum(count)>= All (
+	Select Sum(count) 
+	From Goals GP, Member M 
+	Where GP.MatchId IN(
+		Select  
+		From Goals G
+		Where G.MatchId In(
+			Select E.EliminationId
+			From EliminationGame E
+)	) 
+AND M.MemberId=GP.PlayerId
+Group By PlayerId);
+
+
+////// only slightly off now
+Select M.Name, Sum(count)
+From Goals GP, Member M 
+Where GP.MatchId IN(
+	Select MatchID
+	From Goals G
+	Where G.MatchId In(
+		Select E.EliminationId
+		From EliminationGame E
+)	) 
+AND M.MemberId=GP.PlayerId
+Group by M.name
+Having Sum(count) >= ANY (
+
+-- Select Sum(count) 
+-- From Goals GP, Member M 
+-- Where GP.MatchId IN(
+-- 	Select MatchID
+-- 	From Goals G
+-- 	Where G.MatchId In(
+-- 		Select E.EliminationId
+-- 		From EliminationGame E
+-- )	) 
+-- AND M.MemberId=GP.PlayerId
+-- Group By PlayerId)
+-- ;
+
+	
+
+
+DO NOT LOSE THIS!!
+
+Select Sum(count), M.MemberId 
+From Goals GP, Member M 
+Where GP.MatchId IN(
+		Select E.EliminationId
+		From EliminationGame E
+)	 
+AND M.MemberId=GP.PlayerId
+Group By PlayerId
+;
+
+
+	
+///pretty close, kanye is a problem
+Select Mo.Name, Sum(count)
+From Goals Go, Member Mo 
+Where Go.MatchId IN(
+		Select Eo.EliminationId
+		From EliminationGame Eo
+)	 
+AND Mo.MemberId=Go.PlayerId
+Group by Mo.name
+
+Having Sum(count) >= ANY (
+	Select Sum(count)
+	From Goals GP, Member M 
+	Where GP.MatchId IN(
+		Select E.EliminationId
+		From EliminationGame E
+	)	 
+AND M.MemberId=GP.PlayerId
+Group By PlayerId
+);
+
+	
+
+
+//this is actually it!!
+
+	Select Sum(count), GP.PlayerId
+	From Goals GP
+	Where GP.MatchId IN(
+		Select E.EliminationId
+		From EliminationGame E)	 
+	Group By PlayerId
+	Having Sum(count) >= ANY 
+		(Select Sum(count)
+		From Goals GP
+		Where GP.MatchId IN
+			(Select E.EliminationId
+			From EliminationGame E)	 
+			Group By PlayerId
+    );
+	
+
+
+
+
+///final solution
+Select Member.Name
+From Member
+Where Member.MemberId In(
+Select Distinct PlayerId 
+From Goals
+Where Goals.PlayerId In (
+	Select  GP.PlayerId
+	From Goals GP
+	Where GP.MatchId IN(
+		Select E.EliminationId
+		From EliminationGame E)	 
+	Group By PlayerId
+	Having Sum(count) >= ALL 
+		(Select Sum(count)
+		From Goals GP
+		Where GP.MatchId IN
+			(Select E.EliminationId
+			From EliminationGame E)	 
+			Group By PlayerId
+    )));
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
 
