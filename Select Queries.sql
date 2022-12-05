@@ -48,3 +48,14 @@ AND PlayerId IN
 		FROM TEAM 
 		WHERE Country='Australia'));
 
+
+
+
+Question 7
+SELECT max(cnt)
+FROM
+	(Select count(*) as cnt
+	FROM ticket T
+	Group by T.matchId) c
+
+
