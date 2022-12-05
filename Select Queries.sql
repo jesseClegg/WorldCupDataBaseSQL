@@ -71,5 +71,64 @@ Having count(Country)>=(
 SELECT Count(Year)
 From Tournament);
 
+Question 10
+/////////////////// OLD
+Select MatchId 
+From `Match` M
+Where M.HomeTeamId in (
+Select TeamId
+From Team 
+Where Team.Country = "Iceland"
+)
+OR 
+M.AwayTeamId in (
+Select TeamId
+From Team 
+Where Team.Country = "Iceland"
+);
+
+
+//////////////// OLD
+Select MatchID 
+From Goals 
+Where Goals.MatchId IN(
+	Select MatchId 
+	From `Match` M
+	Where M.HomeTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+	OR 
+	M.AwayTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+)
+;
+////// latest version below ////
+
+
+Select PlayerId
+From Goals 
+Where Goals.MatchId IN(
+	Select MatchId 
+	From `Match` M
+	Where M.HomeTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+	OR 
+	M.AwayTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+)
+Group by PlayerId
+Having count(count)>0
+
+
+
+
+
 
 
