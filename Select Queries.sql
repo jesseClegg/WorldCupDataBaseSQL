@@ -350,7 +350,16 @@ Where Goals.PlayerId In (
 	
 
 
+question 5
 
+Select TeamId
+from TeamMember
+Where TeamMember.MemberId IN 
+	(Select staffId 
+	From supportstaff)
+AND TeamMember.Year="2018"
+Group By TeamMember.TeamId
+Order By count(*);
 
 
 
