@@ -25,3 +25,26 @@ Question 2
 
 Question 3
 
+NOTE DONE
+ Select Distinct *
+From `Match` M
+Where M.MatchId In (
+Select MatchId
+From PoolGame
+);
+
+
+Question 4
+SELECT PlayerID 
+FROM Player WHERE HomeClubName IN
+	(SELECT HomeClubName 
+	FROM HomeClub
+	WHERE country = 'England')
+AND PlayerId IN
+	(SELECT MemberId 
+	FROM TeamMember
+	WHERE teamId IN 
+		(SELECT TeamId 
+		FROM TEAM 
+		WHERE Country='Australia'));
+
