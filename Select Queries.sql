@@ -108,7 +108,7 @@ Where Goals.MatchId IN(
 ////// latest version below ////
 
 
-Select PlayerId
+Select PlayerId, count(*)
 From Goals 
 Where Goals.MatchId IN(
 	Select MatchId 
@@ -124,10 +124,73 @@ Where Goals.MatchId IN(
 		Where Team.Country = "Iceland")
 )
 Group by PlayerId
-Having count(count)>0
+
+
+/////
+getting how many games iceland played:
+Select Count(*)
+From Goals 
+Where Goals.MatchId IN(
+	Select MatchId 
+	From `Match` M
+	Where M.HomeTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+	OR 
+	M.AwayTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+)
+
+//////////////////////////////[10]
+//this should be the good one!!! PROVIDED WE REMOVE ZERO VALUES FROM SCORE!
+Select PlayerId, count(*)
+From Goals 
+Where Goals.MatchId IN(
+	Select MatchId 
+	From `Match` M
+	Where M.HomeTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+	OR 
+	M.AwayTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+)
+Group by PlayerId
+Having count(*)=(Select Count(*)
+From Goals 
+Where Goals.MatchId IN(
+	Select MatchId 
+	From `Match` M
+	Where M.HomeTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+	OR 
+	M.AwayTeamId in 
+		(Select TeamId
+		From Team 
+		Where Team.Country = "Iceland")
+))
 
 
 
+//////////// question 6
+
+
+Select M.Name, S.playerId, Sum(count)
+From Saves S, Member M
+Where PlayerId in(
+	Select PlayerId 
+	From Player) And S.PlayerId=M.MemberId
+    Group by PlayerId;
+
+    
 
 
 
