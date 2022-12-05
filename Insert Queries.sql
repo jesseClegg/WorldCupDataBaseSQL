@@ -5,10 +5,6 @@ VALUES ("England", 55000000)*/
 
 
 
-
-
-
-
 INSERT INTO 
 	Country(Name, Population)
 VALUES
@@ -19,6 +15,10 @@ VALUES
 	("Australia", 25000000);
 
 
-
-
 /* completed above ^^^    */
+
+INSERT INTO
+	Customer()
+
+
+

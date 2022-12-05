@@ -254,16 +254,16 @@ VALUES
 INSERT INTO
   Member(MemberId, Name)
 VALUES
-  (6420, "Australia"),
-  (6620, "Iceland"),
-  (5561, "Australia"),
-  (5991, "Iceland"),
-  (3292, "England"),
-  (1586, "England"),
-  (2741, "England"),
-  (4443, "England"),
-  (4047, "Iceland"),
-  (8968, "Iceland");
+  (6420, "Aubrey Grahm"),
+  (6620, "Kanye West"),
+  (5561, "Kendrick Lamar"),
+  (5991, "Sponge Robert"),
+  (3292, "Eugene Krabs"),
+  (1586, "Robert theBuilder"),
+  (2741, "Zion Willaims"),
+  (4443, "Tracy Mcgrady"),
+  (4047, "Vince Carter"),
+  (8968, "Michael Mouse");
 
 INSERT INTO
   TeamMember(Year, TeamId, MemberId)
