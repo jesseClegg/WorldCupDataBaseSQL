@@ -59,3 +59,17 @@ FROM
 	Group by T.matchId) c
 
 
+
+
+
+Question 9
+
+SELECT  Country
+From Team
+Group by Country
+Having count(Country)>=(
+SELECT Count(Year)
+From Tournament);
+
+
+
