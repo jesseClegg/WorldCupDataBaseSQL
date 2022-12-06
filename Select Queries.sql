@@ -14,12 +14,12 @@
 			)));
 
 ########Question 2
-	SELECT Distinct Name
+SELECT Distinct Name
 	FROM Member M
-    Where M.MemberId in(
-	Select PlayerId
-    From Goals G
-    Where G.Count < 1);
+    Where M.MemberId in
+    	(Select PlayerId
+    	From Goals G
+    	Where G.Count < 1);
 
 ########Question 3
 Select Distinct Tm.teamId
