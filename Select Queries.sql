@@ -27,18 +27,21 @@ From team Tm, Tournament T
 Where Tm.country=T.country ;
 
 ########Question 4
-SELECT PlayerID 
-FROM Player WHERE HomeClubName IN
-	(SELECT HomeClubName 
-	FROM HomeClub
-	WHERE country = 'England')
-AND PlayerId IN
-	(SELECT MemberId 
-	FROM TeamMember
-	WHERE teamId IN 
-		(SELECT TeamId 
-		FROM TEAM 
-		WHERE Country='Australia'));
+Select Name
+From Member 
+Where Member.MemberID IN
+	(SELECT PlayerID 
+	FROM Player WHERE HomeClubName IN
+		(SELECT HomeClubName 
+		FROM HomeClub
+		WHERE country = 'England')
+	AND PlayerId IN
+		(SELECT MemberId 
+		FROM TeamMember
+		WHERE teamId IN 
+			(SELECT TeamId 
+			FROM TEAM 
+			WHERE Country='Australia')));
 
 ########Question 5
 Select TeamId
@@ -96,20 +99,23 @@ SELECT Count(Year)
 From Tournament);
 
 ########Question 10
-Select PlayerId, count(*)
-From Goals 
-Where Goals.MatchId IN(
-	Select MatchId 
-	From `Match` M
-	Where M.HomeTeamId in 
-		(Select TeamId
-		From Team 
-		Where Team.Country = "Iceland")
-	OR 
-	M.AwayTeamId in 
-		(Select TeamId
-		From Team 
-		Where Team.Country = "Iceland")
+Select Name
+From Member
+Where Member.MemberID IN 
+	(Select PlayerId
+	From Goals 
+	Where Goals.MatchId IN(
+		Select MatchId 
+		From `Match` M
+		Where M.HomeTeamId in 
+			(Select TeamId
+			From Team 
+			Where Team.Country = "Iceland")
+		OR 
+		M.AwayTeamId in 
+			(Select TeamId
+			From Team 
+			Where Team.Country = "Iceland")
 )
 Group by PlayerId
 Having count(*)=(Select Count(*)
@@ -126,7 +132,7 @@ Where Goals.MatchId IN(
 		(Select TeamId
 		From Team 
 		Where Team.Country = "Iceland")
-))
+)));
 
 
 
