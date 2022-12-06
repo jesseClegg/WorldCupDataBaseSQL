@@ -22,9 +22,27 @@ SELECT Distinct Name
     	Where G.Count < 1);
 
 ########Question 3
-Select Distinct Tm.teamId
-From team Tm, Tournament T
-Where Tm.country=T.country ;
+Select MatchID
+From `Match` 
+Where HomeTeamId in
+	(Select Distinct Tm.teamId
+	From team Tm, Tournament T
+	Where Tm.country=T.country )
+OR
+	AwayTeamID in
+	(Select Distinct Tm.teamId
+	From team Tm, Tournament T
+	Where Tm.country=T.country )
+AND
+	MatchID in
+    (Select MatchId
+    From PoolGame)
+;
+
+
+
+
+
 
 ########Question 4
 Select Name
