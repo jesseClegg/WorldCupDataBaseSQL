@@ -350,7 +350,7 @@ Where Goals.PlayerId In (
 	
 
 
-question 5
+////question 5
 Select TeamId
 from TeamMember
 Where TeamMember.MemberId IN 
@@ -361,6 +361,11 @@ Group By TeamMember.TeamId
 Order By count(*) DESC;
 
 
+/// Question 3
+
+Select Distinct Tm.teamId
+From team Tm, Tournament T
+Where Tm.country=T.country ;
 
 
 
