@@ -267,7 +267,10 @@ VALUES
   (4443, "Tracy Mcgrady"),
   (4047, "Vince Carter"),
   (8968, "Michael Mouse"),
-  (7420, "Australian Janitor");
+  (7420, "Australian Janitor"),
+  (5256,  "minion one"),
+  (8357,  "minion two"),
+  (9463,  "minion three");
 
 INSERT INTO
   TeamMember(Year, TeamId, MemberId)
@@ -282,7 +285,10 @@ VALUES
   ("2014",  62098, 6620),
   ("2010",  62098, 6620),
   ("2006",  62098, 6620),
-  ("2018",  78242, 7420);
+  ("2018",  78242, 7420),
+  ("2018",  42859, 5256),
+  ("2018",  42859, 8357),
+  ("2018",  42859, 9463);
 
 INSERT INTO
   SupportStaff(StaffId, Role)
@@ -292,7 +298,10 @@ VALUES
   (4443, "Trainer"),
   (4047, "Equiptment Manager"),
   (8968, "Bus Driver"),
-  (7420,  "Janitor");
+  (7420,  "Janitor"),
+  (5256,  "minion one"),
+  (8357,  "minion two"),
+  (9463,  "minion three");
 
 INSERT INTO
   HomeClub(HomeClubName, Country)

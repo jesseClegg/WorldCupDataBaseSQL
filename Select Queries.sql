@@ -351,7 +351,6 @@ Where Goals.PlayerId In (
 
 
 question 5
-
 Select TeamId
 from TeamMember
 Where TeamMember.MemberId IN 
@@ -359,8 +358,7 @@ Where TeamMember.MemberId IN
 	From supportstaff)
 AND TeamMember.Year="2018"
 Group By TeamMember.TeamId
-Order By count(*);
-
+Order By count(*) DESC;
 
 
 
